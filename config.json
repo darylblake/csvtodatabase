@@ -1,0 +1,8 @@
+{
+	"dbparams": {
+		"user":"dbuser",
+		"password":"password",
+		"dbserver":"localhost"
+	},
+	"dbname":"databasename"
+}
