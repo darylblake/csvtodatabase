@@ -4,5 +4,6 @@
 		"password":"password",
 		"dbserver":"localhost"
 	},
-	"dbname":"databasename"
+	"dbname":"databasename",
+        "dbtype":"mysql"
 }

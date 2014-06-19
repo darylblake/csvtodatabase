@@ -12,11 +12,11 @@
 
 class CsvToDatabase
 {
-    private static $_server = "localhost";
-    private static $_user = "username";
-    private static $_password = "password";
-    private static $_database = "dbname";
-    private static $_databaseType = "mysql";
+    private static $_server;
+    private static $_user;
+    private static $_password;
+    private static $_database;
+    private static $_databaseType;
     private static $_querySplitSize = 1;
     
     private $_filename;
@@ -31,11 +31,22 @@ class CsvToDatabase
     
     public function __construct($filename) 
     {
+        $this->_init();
         $this->_filename = $filename;
         if(File::isFullPath($filename))
         {
             $this->_fileNameOnly = File::getFileNameFromFullPath($filename);
         } 
+    }
+    
+    private function _init()
+    {
+        $connector = json_decode(file_get_contents("config.json"));
+        static::$_server = $connector["dbparams"]["dbserver"];
+        static::$_user = $connector["dbparams"]["user"];
+        static::$_password = $connector["dbparams"]["password"];
+        static::$_database = $connector["dbname"];
+        static::$_databaseType = $connector["dbtype"];
     }
     
     private function _extractTheShit()
