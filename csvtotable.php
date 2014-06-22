@@ -42,11 +42,11 @@ class CsvToDatabase
     private function _init()
     {
         $connector = json_decode(file_get_contents("config.json"));
-        static::$_server = $connector["dbparams"]["dbserver"];
-        static::$_user = $connector["dbparams"]["user"];
-        static::$_password = $connector["dbparams"]["password"];
-        static::$_database = $connector["dbname"];
-        static::$_databaseType = $connector["dbtype"];
+        static::$_server = $connector->dbparams->dbserver;
+        static::$_user = $connector->dbparams->user;
+        static::$_password = $connector->dbparams->password;
+        static::$_database = $connector->dbname;
+        static::$_databaseType = $connector->dbtype;
     }
     
     private function _extractTheShit()
