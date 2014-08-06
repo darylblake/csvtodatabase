@@ -16,3 +16,5 @@ $ php csvtodatabase.php clean filename.csv
 this will output clean_filename.csv which will be modified with some escaped data. Then run the initial command to import it.
 
 $ php csvtodatabase.php clean_filename.csv
+
+TODO: Add support for mysql 5.6 the types are not strict enough. Working well with mysql 5.5 from the CLI.
