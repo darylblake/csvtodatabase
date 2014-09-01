@@ -19,6 +19,7 @@ class CsvToDatabase
     private static $_databaseType;
     private static $_querySplitSize = 1;
     
+    private $_rowDepthEvaluationPercentage = 10;
     private $_filename;
     private $_headerMap = array();
     private $_data = array();
@@ -209,8 +210,10 @@ class CsvToDatabase
     }
     
     private function _processColumn($ordinalPosition)
-    {
-        for($i=0;$i<$this->_columnCount; $i++)
+    { 
+        //How far through the data do we look to know enough is enough??? 
+        $items = intval( $this->_rowCount / $this->_rowDepthEvaluationPercentage );
+        for($i=0;$i<$items; $i++)
         {
             $this->_evaluate( $this->_data[$i][$ordinalPosition], $ordinalPosition );
         }
